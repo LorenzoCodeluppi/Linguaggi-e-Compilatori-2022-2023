@@ -23,3 +23,8 @@ compile:
 load:
 	opt -load-pass-plugin=./lib/LoopFusion.so -passes=loop_fusion ./test/Loop.opt.ll -o Loop.bc
 	llvm-dis Loop.bc -o Loop.ll
+
+compile-main:
+	llc -filetype=obj $(file) -o Loop.o
+	gcc test/Main.c Loop.o
+	./a.out
