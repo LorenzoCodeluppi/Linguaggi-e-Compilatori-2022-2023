@@ -4,3 +4,4 @@
 *.bc
 *.ll
 *.out
+LoopOpt.ll
