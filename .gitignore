@@ -2,4 +2,6 @@
 *.o
 *.so
 *.bc
+*.ll
+*.out
 LoopOpt.ll
