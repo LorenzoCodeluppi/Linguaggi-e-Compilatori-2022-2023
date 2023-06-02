@@ -4,4 +4,5 @@
 *.bc
 *.ll
 *.out
+omp_test
 LoopOpt.ll
