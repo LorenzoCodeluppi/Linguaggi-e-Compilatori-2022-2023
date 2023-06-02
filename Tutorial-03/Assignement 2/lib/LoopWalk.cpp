@@ -47,6 +47,8 @@ class LoopWalkPass final : public LoopPass {
     L->getExitBlocks(exitBlocks);
     
     // scegliere le instruzioni per la code motion
+    // !IMPORTANTE! di fatto in SSA, si possono spostare tutte le inst loop invariant
+    // senza controllare altre condizioni
     for(auto& invariantInst : invariantMap) {
       if(invariantInst.second) {
         BasicBlock* instBB = dyn_cast<Instruction>(invariantInst.first)->getParent();
@@ -72,6 +74,7 @@ class LoopWalkPass final : public LoopPass {
           CMcandidates.push_back(invariantInst.first);
       }
     }
+
 
     // itero sul dominator tree in DFS
     for(auto node = GraphTraits<DominatorTree *>::nodes_begin(DT); node != GraphTraits<DominatorTree *>::nodes_end(DT); ++node) {
